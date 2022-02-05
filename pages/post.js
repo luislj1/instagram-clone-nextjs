@@ -11,9 +11,5 @@ export default function Home() {
 
       <NewPost/>
     </div>
-
-
-
   )
-  
 }
