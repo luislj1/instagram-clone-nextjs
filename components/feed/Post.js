@@ -107,7 +107,7 @@ export default function Post({ id, post }){
                     {liked ? <HeartIconFilled className='w-7 h-7 text-[#ED4956] cursor-pointer' onClick={likePost} /> : <HeartIcon className='w-7 h-7 cursor-pointer' onClick={likePost} /> }
                     <AnnotationIcon className='w-7 h-7'/>
                     <PaperAirplaneIcon className='w-7 h-7'/>
-                    {session.user.uid === post?.id && <TrashIcon className='w-7 h-7 cursor-pointer' onClick={() => deleteDoc(db, 'posts', id)}/>}
+                    {session.user.uid === post?.id && <TrashIcon className='w-7 h-7 cursor-pointer' onClick={() => deleteDoc(doc(db, 'posts', id))}/>}
                 </div>
                 <span className='text-sm font-semibold'>{likes.length} likes</span>
                 <span className={`text-sm ${post.text.indexOf(' ') >= 0 ? 'break-words' : 'break-all'}`}> <span className='font-semibold'>{post.username} </span>{post.text}</span>
