@@ -1,4 +1,4 @@
-import { HeartIcon, AnnotationIcon, PaperAirplaneIcon, DotsHorizontalIcon, EmojiHappyIcon } from "@heroicons/react/outline"
+import { HeartIcon, AnnotationIcon, PaperAirplaneIcon, DotsHorizontalIcon, EmojiHappyIcon, TrashIcon } from "@heroicons/react/outline"
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid"
 import { useState, useEffect } from "react"
 
@@ -107,6 +107,7 @@ export default function Post({ id, post }){
                     {liked ? <HeartIconFilled className='w-7 h-7 text-[#ED4956] cursor-pointer' onClick={likePost} /> : <HeartIcon className='w-7 h-7 cursor-pointer' onClick={likePost} /> }
                     <AnnotationIcon className='w-7 h-7'/>
                     <PaperAirplaneIcon className='w-7 h-7'/>
+                    {session.user.id === post?.id && <TrashIcon classname='w-7 h-7 cursor-pointer' onClick={() => deleteDoc(db, 'posts', id)}/>}
                 </div>
                 <span className='text-sm font-semibold'>{likes.length} likes</span>
                 <span className={`text-sm ${post.text.indexOf(' ') >= 0 ? 'break-words' : 'break-all'}`}> <span className='font-semibold'>{post.username} </span>{post.text}</span>
